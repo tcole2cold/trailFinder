@@ -1,0 +1,13 @@
+{
+  "intersection" : [
+
+    {
+      "id":"1",
+      "midPointsAToB": [74,34,33]
+    },
+    {
+      "id":"2",
+      "midPointsAToB": [76,37,38]
+    }
+  ]
+}
