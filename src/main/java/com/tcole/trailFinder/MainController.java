@@ -1,6 +1,7 @@
 package com.tcole.trailFinder;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -14,8 +15,8 @@ public class MainController {
         return "API is up and running.";
     }
     @GetMapping("/printTrail")
-    public String printTrail() throws IOException {
-        Trail trail = new Trail(1);
+    public String printTrail(@RequestParam int id) throws IOException {
+        Trail trail = new Trail(id);
         return trail.printInfo();
     }
 

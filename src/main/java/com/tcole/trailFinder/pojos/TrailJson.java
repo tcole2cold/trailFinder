@@ -1,4 +1,4 @@
-package com.tcole.trailFinder;
+package com.tcole.trailFinder.pojos;
 
 public class TrailJson {
     int id;

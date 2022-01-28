@@ -1,9 +1,39 @@
 {
-      "id":"1",
-      "name":"Bradema",
-      "totalDistance":1.2,
-      "terminusA":1,
-      "terminusB":2,
-      "midPointsAToB": [3,4,5],
-      "distanceBetweenMidpoints": [0.1,0.6,0.5,0.3]
+
+      "1": {
+            "id": "1",
+            "name": "Bradema",
+            "totalDistance": 1.2,
+            "terminusA": 1,
+            "terminusB": 2,
+            "midPointsAToB": [
+                  3,
+                  4,
+                  5
+            ],
+            "distanceBetweenMidpoints": [
+                  0.1,
+                  0.6,
+                  0.5,
+                  0.3
+            ]
+      },
+      "2": {
+            "id": "2",
+            "name": "Bench",
+            "totalDistance": 3.2,
+            "terminusA": 3,
+            "terminusB": 4,
+            "midPointsAToB": [
+                  5,
+                  55,
+                  434
+            ],
+            "distanceBetweenMidpoints": [
+                  0.2,
+                  0.6,
+                  0.5,
+                  0.3
+            ]
+      }
 }
