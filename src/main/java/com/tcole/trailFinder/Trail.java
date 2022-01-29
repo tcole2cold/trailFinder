@@ -33,6 +33,12 @@ public class Trail {
         this.distanceBetweenMidpoints = trailJson.getDistanceBetweenMidpoints();
     }
 
+    public String printInfo() {
+        String trailInfo = "ID = " + id + " " + "NAME = " + " " + name + " " + "Total Distance = " + " " + Double.toString(totalDistance)  + " " +
+                "Terminus A = "+ " " + terminusA+ " " + "Terminus B = "+ " " + terminusB;
+        return trailInfo;
+    }
+
     public int getId() {
         return id;
     }

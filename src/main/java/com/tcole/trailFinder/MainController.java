@@ -14,10 +14,17 @@ public class MainController {
     public String heartBeat() {
         return "API is up and running.";
     }
+
     @GetMapping("/printTrail")
     public String printTrail(@RequestParam int id) throws IOException {
         Trail trail = new Trail(id);
         return trail.printInfo();
+    }
+
+    @GetMapping("/printIntersection")
+    public String printIntersection(@RequestParam int id) throws IOException {
+        Intersection intersection = new Intersection(id);
+        return intersection.printInfo();
     }
 
 }
