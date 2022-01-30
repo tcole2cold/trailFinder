@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -25,6 +27,17 @@ public class MainController {
     public String printIntersection(@RequestParam int id) throws IOException {
         Intersection intersection = new Intersection(id);
         return intersection.printInfo();
+    }
+
+    @GetMapping("/printAllTrails")
+    public List<String>
+    printAllTrails() throws IOException {
+        List<String> allTrails = new ArrayList<String>();
+        for (int i=1; i<18; i++) {
+            Trail trail = new Trail(i);
+            allTrails.add(trail.printInfo());
+        }
+        return allTrails;
     }
 
 }

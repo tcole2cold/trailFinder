@@ -3,7 +3,6 @@ package com.tcole.trailFinder;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcole.trailFinder.pojos.IntersectionJson;
-import com.tcole.trailFinder.pojos.TrailJson;
 
 import java.io.File;
 import java.io.IOException;

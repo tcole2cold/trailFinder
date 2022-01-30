@@ -2,38 +2,243 @@
 
       "1": {
             "id": "1",
-            "name": "Bradema",
-            "totalDistance": 1.2,
+            "name": "One",
+            "totalDistance": 1,
             "terminusA": 1,
-            "terminusB": 2,
+            "terminusB": 3,
             "midPointsAToB": [
-                  3,
-                  4,
-                  5
+
             ],
             "distanceBetweenMidpoints": [
-                  0.1,
-                  0.6,
-                  0.5,
-                  0.3
+
             ]
       },
       "2": {
             "id": "2",
-            "name": "Bench",
-            "totalDistance": 3.2,
-            "terminusA": 3,
-            "terminusB": 4,
+            "name": "Two",
+            "totalDistance": 0.8,
+            "terminusA": 1,
+            "terminusB": 3,
             "midPointsAToB": [
-                  5,
-                  55,
-                  434
+                  2
+            ],
+            "distanceBetweenMidpoints": [
+                  0.4,
+                  0.4
+            ]
+      },
+      "3": {
+            "id": "3",
+            "name": "Three",
+            "totalDistance": 1.8,
+            "terminusA": 9,
+            "terminusB": 1,
+            "midPointsAToB": [
+                  8,
+                  5
+            ],
+            "distanceBetweenMidpoints": [
+                  0.4,
+                  0.6,
+                  0.8
+            ]
+      },
+      "4": {
+            "id": "4",
+            "name": "Four",
+            "totalDistance": 0.8,
+            "terminusA": 2,
+            "terminusB": 6,
+            "midPointsAToB": [
+                  4
+            ],
+            "distanceBetweenMidpoints": [
+                  0.8,
+                  0.8
+            ]
+      },
+      "5": {
+            "id": "5",
+            "name": "Five",
+            "totalDistance": 0.1,
+            "terminusA": 6,
+            "terminusB": 7,
+            "midPointsAToB": [
+
+            ],
+            "distanceBetweenMidpoints": [
+
+            ]
+      },
+      "6": {
+            "id": "6",
+            "name": "Six",
+            "totalDistance": 2.7,
+            "terminusA": 8,
+            "terminusB": 16,
+            "midPointsAToB": [
+                  11,
+                  14
+            ],
+            "distanceBetweenMidpoints": [
+                  0.7,
+                  0.5,
+                  1.5
+
+            ]
+      },
+      "7": {
+            "id": "7",
+            "name": "Seven",
+            "totalDistance": 0.4,
+            "terminusA": 9,
+            "terminusB": 12,
+            "midPointsAToB": [
+
+            ],
+            "distanceBetweenMidpoints": [
+
+            ]
+      },
+      "8": {
+            "id": "8",
+            "name": "Eight",
+            "totalDistance": 0.7,
+            "terminusA": 12,
+            "terminusB": 15,
+            "midPointsAToB": [
+
+            ],
+            "distanceBetweenMidpoints": [
+
+            ]
+      },
+      "9": {
+            "id": "9",
+            "name": "Nine",
+            "totalDistance": 0.8,
+            "terminusA": 9,
+            "terminusB": 13,
+            "midPointsAToB": [
+                  10
+            ],
+            "distanceBetweenMidpoints": [
+                  0.1,
+                  0.7
+            ]
+      },
+      "10": {
+            "id": "10",
+            "name": "Ten",
+            "totalDistance": 0.4,
+            "terminusA": 10,
+            "terminusB": 12,
+            "midPointsAToB": [
+
+            ],
+            "distanceBetweenMidpoints": [
+
+            ]
+      },
+      "11": {
+            "id": "11",
+            "name": "Eleven",
+            "totalDistance": 1.1,
+            "terminusA": 14,
+            "terminusB": 13,
+            "midPointsAToB": [
+                  15
+            ],
+            "distanceBetweenMidpoints": [
+                  0.8,
+                  0.3
+            ]
+      },
+      "12": {
+            "id": "12",
+            "name": "Twelve",
+            "totalDistance": 0.5,
+            "terminusA": 3,
+            "terminusB": 14,
+            "midPointsAToB": [
+
+            ],
+            "distanceBetweenMidpoints": [
+
+            ]
+      },
+      "13": {
+            "id": "13",
+            "name": "Thirteen",
+            "totalDistance": 1.0,
+            "terminusA": 16,
+            "terminusB": 16,
+            "midPointsAToB": [
+                  20,
+                  19,
+                  21,
+                  22
             ],
             "distanceBetweenMidpoints": [
                   0.2,
-                  0.6,
-                  0.5,
-                  0.3
+                  0.2,
+                  0.2,
+                  0.2,
+                  0.2
+            ]
+      },
+      "14": {
+            "id": "14",
+            "name": "Fourteen",
+            "totalDistance": 0.4,
+            "terminusA": 20,
+            "terminusB": 22,
+            "midPointsAToB": [
+                  17
+            ],
+            "distanceBetweenMidpoints": [
+                  0.2,
+                  0.2
+            ]
+      },
+      "15": {
+            "id": "15",
+            "name": "Fifteen",
+            "totalDistance": 0.3,
+            "terminusA": 19,
+            "terminusB": 21,
+            "midPointsAToB": [
+                  18
+            ],
+            "distanceBetweenMidpoints": [
+                  0.1,
+                  0.2
+            ]
+      },
+      "16": {
+            "id": "16",
+            "name": "Sixteen",
+            "totalDistance": 0.1,
+            "terminusA": 17,
+            "terminusB": 18,
+            "midPointsAToB": [
+
+            ],
+            "distanceBetweenMidpoints": [
+
+            ]
+      },
+      "17": {
+            "id": "17",
+            "name": "Seventeen",
+            "totalDistance": 0.1,
+            "terminusA": 5,
+            "terminusB": 4,
+            "midPointsAToB": [
+
+            ],
+            "distanceBetweenMidpoints": [
+
             ]
       }
 }
