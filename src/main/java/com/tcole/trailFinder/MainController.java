@@ -33,11 +33,22 @@ public class MainController {
     public List<String>
     printAllTrails() throws IOException {
         List<String> allTrails = new ArrayList<String>();
-        for (int i=1; i<18; i++) {
+        for (int i=1; i<19; i++) {
             Trail trail = new Trail(i);
             allTrails.add(trail.printInfo());
         }
         return allTrails;
+    }
+
+    @GetMapping("/printAllIntersections")
+    public List<String>
+    printAllIntersections() throws IOException {
+        List<String> allIntersections = new ArrayList<String>();
+        for (int i=1; i<23; i++) {
+            Intersection intersection = new Intersection(i);
+            allIntersections.add(intersection.printInfo());
+        }
+        return allIntersections;
     }
 
 }
