@@ -6,7 +6,9 @@ import com.tcole.trailFinder.pojos.IntersectionJson;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Intersection {
     int id;
@@ -29,6 +31,15 @@ public class Intersection {
     }
 
     public int[] getTrails() {
+        return trails;
+    }
+
+    public List<Trail> getListOfTrails() throws IOException {
+        List<Trail> trails = new ArrayList<Trail>();
+        for(int trailId : getTrails()) {
+            Trail trail = new Trail(trailId);
+            trails.add(trail);
+        }
         return trails;
     }
 

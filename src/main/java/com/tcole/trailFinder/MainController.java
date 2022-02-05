@@ -51,4 +51,11 @@ public class MainController {
         return allIntersections;
     }
 
+    @GetMapping("/routeScoutDevelop")
+    public void
+    routeScoutDebuggin(@RequestParam int id) throws IOException {
+        RouteScout routeScout = new RouteScout(id);
+        routeScout.findFarthestPossibleIntersection();
+    }
+
 }

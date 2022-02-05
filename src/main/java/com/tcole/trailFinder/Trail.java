@@ -9,13 +9,14 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Trail {
-    int id;
-    String name;
-    double totalDistance;
-    int terminusA;
-    int terminusB;
-    int[] midPointsAToB;
-    double[] distanceBetweenMidpoints;
+    private int id;
+    private String name;
+    private double totalDistance;
+    private int terminusA;
+    private int terminusB;
+    private int[] midPointsAToB;
+    private double[] distanceBetweenMidpoints;
+    private boolean isLoop;
 
     public Trail(int id) throws IOException {
         this.id = id;
@@ -31,6 +32,10 @@ public class Trail {
         this.terminusB = trailJson.getTerminusB();
         this.midPointsAToB = trailJson.getMidPointsAToB();
         this.distanceBetweenMidpoints = trailJson.getDistanceBetweenMidpoints();
+
+        if(terminusA == terminusB){
+            isLoop = true;
+        } else isLoop = false;
     }
 
     public String printInfo() {
@@ -65,5 +70,8 @@ public class Trail {
 
     public double[] getDistanceBetweenMidpoints() {
         return distanceBetweenMidpoints;
+    }
+    public boolean isLoop() {
+        return isLoop;
     }
 }

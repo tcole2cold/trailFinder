@@ -10,4 +10,8 @@ class TrailFinderApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void midpointTotalsEqualTrailTotal() {
+
+	}
 }

@@ -48,7 +48,7 @@
             "name": "Four",
             "totalDistance": 1.2,
             "terminusA": 2,
-            "terminusB": 6,
+            "terminusB": 11,
             "midPointsAToB": [
                   4,
                   6
@@ -163,10 +163,11 @@
             "terminusA": 3,
             "terminusB": 14,
             "midPointsAToB": [
-
+                  7
             ],
             "distanceBetweenMidpoints": [
-
+                  0.6,
+                  0.5
             ]
       },
       "13": {
@@ -179,7 +180,7 @@
                   20,
                   19,
                   21,
-                  22
+                  0
             ],
             "distanceBetweenMidpoints": [
                   0.2,
@@ -194,7 +195,7 @@
             "name": "Fourteen",
             "totalDistance": 0.4,
             "terminusA": 20,
-            "terminusB": 22,
+            "terminusB": 0,
             "midPointsAToB": [
                   17
             ],
@@ -243,9 +244,9 @@
 
             ]
       },
-      "18": {
-            "id": "18",
-            "name": "Eighteen",
+      "0": {
+            "id": "0",
+            "name": "Zero",
             "totalDistance": 0.1,
             "terminusA": 11,
             "terminusB": 12,
