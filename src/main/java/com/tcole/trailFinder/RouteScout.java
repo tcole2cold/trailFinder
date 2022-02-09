@@ -6,33 +6,58 @@ import java.util.List;
 
 public class RouteScout {
 
-    Intersection startingIntersection;
-    Trail startingTrail;
-
-    public RouteScout(int intersectionId) throws IOException {
-        this.startingIntersection = new Intersection(intersectionId);
-        Trail startingTrail = startingIntersection.getListOfTrails().get((int)(Math.random() * startingIntersection.getTrails().length));
-        this.startingTrail = startingTrail;
-        System.out.println("Starting intersection : " + startingIntersection.getId());
-        System.out.println(". . . . . . . . . . .");
-
+    public RouteScout() throws IOException {
     }
 
-    public void findFarthestPossibleIntersection() throws IOException {
-       // List<Trail> trails = startingIntersection.getListOfTrails();
-        //getDistanceToNextIntersection(startingIntersection, startingTrail, pickAStartingDirection());
-        Step returner = getNextIntersectionAlongTrail(startingIntersection, startingTrail, pickAStartingDirection(startingTrail, startingIntersection));
-        System.out.println("Next intersection : " +returner.getEndingIntersection().getId());
-        System.out.println("Next trail : " +returner.getTrail().getName());
-        System.out.println("Distance to next step : " +returner.getDistance());
+    public Route generateARandomRoute(int startingIntersectionId, double minimumDistance, double maximumDistance) throws IOException {
+        Step firstStep = getFirstStep(startingIntersectionId);
+        System.out.println("KICKING OFF THE ROUTE SCOUT AT TRAIL NO. " + startingIntersectionId);
+        List<Route> eligibleRoutes = new ArrayList<Route>();
+        int attemptNumber = 0;
+
+        while(eligibleRoutes.size() < 1) {
+                Route possibleRoute = new Route();
+                possibleRoute.addStepToRoute(firstStep);
+                boolean viable = true;
+                boolean eligible = false;
+            attemptNumber++;
+            System.out.println("ATTEMPT NO. " + String.valueOf(attemptNumber));
+                while(viable && !eligible) {
+                    if (possibleRoute.getTotalDistance() > maximumDistance) {
+                        viable = false;
+                    }
+
+                    Trail randomTrailToTry = getRandomTrailAtIntersection(possibleRoute.getLastIntersection().getId());
+                    Step newStep = getNextStep(possibleRoute.getLastIntersection(), randomTrailToTry, pickADirection(randomTrailToTry, possibleRoute.getLastIntersection()));
 
 
+                 //   if (!possibleRoute.doublesBackOverPreviousStep(newStep) && !possibleRoute.alreadyUsedTrailSegmentSameDirection(newStep)) {
+                    if (!possibleRoute.doublesBackOverPreviousStep(newStep)) {
+                            possibleRoute.addStepToRoute(newStep);
+                    }
 
-//        for (Trail trail : trails) {
-//            double accumulatedMileage = 0;
-//            getDistanceToNextIntersection(startingIntersection, trail, pickAStartingDirection());
-//            getNextIntersectionAlongTrail(startingIntersection, trail, pickAStartingDirection());
-//        }
+                    if (minimumDistance < possibleRoute.getTotalDistance() && maximumDistance > possibleRoute.getTotalDistance() && possibleRoute.endsAtRouteStart(newStep)) {
+                        eligibleRoutes.add(possibleRoute);
+                        eligible = true;
+                    }
+                }
+
+        }
+        for (Step step : eligibleRoutes.get(0).getSteps()) {
+            System.out.println("GO TO: " + step.getEndingIntersection().getId());
+        }
+        System.out.println("TOTAL DISTANCE OF THIS ROUTE: " + eligibleRoutes.get(0).getTotalDistance());
+        return eligibleRoutes.get(0);
+    }
+
+    private Step getFirstStep(int startingIntersectionId) throws IOException {
+        Intersection startingIntersection = new Intersection(startingIntersectionId);
+        Trail startingTrail = getRandomTrailAtIntersection(startingIntersection.getId());
+        return getNextStep(startingIntersection, startingTrail, pickADirection(startingTrail, startingIntersection));
+    }
+
+    private Trail getRandomTrailAtIntersection(int intersectionId) throws IOException {
+        return new Intersection(intersectionId).getListOfTrails().get((int)(Math.random() * new Intersection(intersectionId).getTrails().length));
     }
 
     private String determineLocationAlongTrail(Trail trail, Intersection currentIntersection) {
@@ -44,9 +69,9 @@ public class RouteScout {
         else return String.valueOf(currentIntersection.getId());
     }
 
-    private Step getNextIntersectionAlongTrail(Intersection intersection, Trail trail, String direction) throws IOException {
+    private Step getNextStep(Intersection startingintersection, Trail trail, String direction) throws IOException {
         Step nextStep = new Step();
-        nextStep.setStartingIntersection(intersection);
+        nextStep.setStartingIntersection(startingintersection);
         nextStep.setTrail(trail);
 
         int[] intersectionsAlongTrail = trail.getMidPointsAToB();
@@ -73,24 +98,24 @@ public class RouteScout {
 
         //getting index of current position on trail if midpoints exist
         for(int i = 0; i < intersectionsAlongTrail.length; i++) {
-            if (intersectionsAlongTrail[i] == intersection.getId()) {
+            if (intersectionsAlongTrail[i] == startingintersection.getId()) {
                 indexOfCurrentLocation = i;
             }
             terminusesAndIntersections.add(new Intersection(intersectionsAlongTrail[i]));
         }
         terminusesAndIntersections.add(new Intersection(trail.getTerminusB()));
 
-        if(intersection.getId() == trail.getTerminusA() && !trail.isLoop()) {
+        if(startingintersection.getId() == trail.getTerminusA() && !trail.isLoop()) {
             nextStep.setDistance(trail.getDistanceBetweenMidpoints()[0]);
             nextStep.setEndingIntersection(terminusesAndIntersections.get(1));
             return nextStep;
         }
-        else if(intersection.getId() == trail.getTerminusB() && !trail.isLoop()) {
+        else if(startingintersection.getId() == trail.getTerminusB() && !trail.isLoop()) {
             nextStep.setDistance(trail.getDistanceBetweenMidpoints()[terminusesAndIntersections.size() - 2]);
             nextStep.setEndingIntersection(terminusesAndIntersections.get(terminusesAndIntersections.size() - 2));
             return nextStep;
         }
-        else if(intersection.getId() == trail.getTerminusA() && trail.isLoop() || intersection.getId() == trail.getTerminusB() && trail.isLoop()) {
+        else if(startingintersection.getId() == trail.getTerminusA() && trail.isLoop() || startingintersection.getId() == trail.getTerminusB() && trail.isLoop()) {
             if(Math.random() > 0.5) {
                 nextStep.setDistance(trail.getDistanceBetweenMidpoints()[0]);
                 nextStep.setEndingIntersection(terminusesAndIntersections.get(1));
@@ -138,7 +163,7 @@ public class RouteScout {
         return distance;
     }
 
-    private String pickAStartingDirection(Trail trail, Intersection intersection) {
+    private String pickADirection(Trail trail, Intersection intersection) {
         String startLine = determineLocationAlongTrail(trail, intersection);
         if(startLine.equals("A")) {
             return "AB";

@@ -51,11 +51,17 @@ public class MainController {
         return allIntersections;
     }
 
-    @GetMapping("/routeScoutDevelop")
-    public void
-    routeScoutDebuggin(@RequestParam int id) throws IOException {
-        RouteScout routeScout = new RouteScout(id);
-        routeScout.findFarthestPossibleIntersection();
+    @GetMapping("/getRoute")
+    public Route getRoute(@RequestParam int id, @RequestParam int min, @RequestParam int max) throws IOException {
+        RouteScout scout = new RouteScout();
+        return scout.generateARandomRoute(id, min, max);
     }
+
+//    @GetMapping("/routeScoutDevelop")
+//    public void
+//    routeScoutDebuggin(@RequestParam int startingIntersectionId) throws IOException {
+//        RouteScout routeScout = new RouteScout();
+//       // routeScout.getFirstStep(startingIntersectionId);
+//    }
 
 }
