@@ -22,6 +22,9 @@ public class RouteScout {
                 boolean eligible = false;
             attemptNumber++;
             System.out.println("ATTEMPT NO. " + String.valueOf(attemptNumber));
+            if (attemptNumber >= 300){
+                return null;
+            }
                 while(viable && !eligible) {
                     if (possibleRoute.getTotalDistance() > maximumDistance) {
                         viable = false;
