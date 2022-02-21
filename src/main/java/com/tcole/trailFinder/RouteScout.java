@@ -6,10 +6,12 @@ import java.util.List;
 
 public class RouteScout {
 
-    public RouteScout() throws IOException {
+    public RouteScout() {
     }
 
     public Route generateARandomRoute(int startingIntersectionId, double minimumDistance, double maximumDistance) throws IOException {
+        double fuzzyMin = convertToFuzzyMinMax(minimumDistance, true);
+        double fuzzyMax = convertToFuzzyMinMax(maximumDistance, false);
         Step firstStep = getFirstStep(startingIntersectionId);
         System.out.println("KICKING OFF THE ROUTE SCOUT AT TRAIL NO. " + startingIntersectionId);
         List<Route> eligibleRoutes = new ArrayList<Route>();
@@ -26,7 +28,7 @@ public class RouteScout {
                 return null;
             }
                 while(viable && !eligible) {
-                    if (possibleRoute.getTotalDistance() > maximumDistance) {
+                    if (possibleRoute.getTotalDistance() > fuzzyMax) {
                         viable = false;
                     }
 
@@ -39,7 +41,7 @@ public class RouteScout {
                             possibleRoute.addStepToRoute(newStep);
                     }
 
-                    if (minimumDistance < possibleRoute.getTotalDistance() && maximumDistance > possibleRoute.getTotalDistance() && possibleRoute.endsAtRouteStart(newStep)) {
+                    if (fuzzyMin < possibleRoute.getTotalDistance() && fuzzyMax > possibleRoute.getTotalDistance() && possibleRoute.endsAtRouteStart(newStep)) {
                         eligibleRoutes.add(possibleRoute);
                         eligible = true;
                     }
@@ -182,6 +184,12 @@ public class RouteScout {
         }
     }
 
-
+    public double convertToFuzzyMinMax(double rawInputNum, boolean isMin) {
+        double fuzzyNum = rawInputNum;
+        if(isMin) {
+            fuzzyNum = fuzzyNum - 0.15;
+        } else fuzzyNum = fuzzyNum + 0.15;
+        return fuzzyNum;
+    }
 
 }
