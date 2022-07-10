@@ -9,14 +9,15 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Trail {
-    private int id;
-    private String name;
-    private double totalDistance;
-    private int terminusA;
-    private int terminusB;
-    private int[] midPointsAToB;
-    private double[] distanceBetweenMidpoints;
-    private boolean isLoop;
+    private final int numberOfTrails;
+    private final int id;
+    private final String name;
+    private final double totalDistance;
+    private final int terminusA;
+    private final int terminusB;
+    private final int[] midPointsAToB;
+    private final double[] distanceBetweenMidpoints;
+    private final boolean isLoop;
 
     public Trail(int id) throws IOException {
         this.id = id;
@@ -32,16 +33,18 @@ public class Trail {
         this.terminusB = trailJson.getTerminusB();
         this.midPointsAToB = trailJson.getMidPointsAToB();
         this.distanceBetweenMidpoints = trailJson.getDistanceBetweenMidpoints();
+        this.numberOfTrails = trails.keySet().size();
 
-        if(terminusA == terminusB){
-            isLoop = true;
-        } else isLoop = false;
+        isLoop = terminusA == terminusB;
     }
 
     public String printInfo() {
-        String trailInfo = "ID = " + id + " " + "NAME = " + " " + name + " " + "Total Distance = " + " " + Double.toString(totalDistance)  + " " +
+        return "ID = " + id + " " + "NAME = " + " " + name + " " + "Total Distance = " + " " + totalDistance + " " +
                 "Terminus A = "+ " " + terminusA+ " " + "Terminus B = "+ " " + terminusB;
-        return trailInfo;
+    }
+
+    public int getNumberOfTrails() {
+        return numberOfTrails;
     }
 
     public int getId() {

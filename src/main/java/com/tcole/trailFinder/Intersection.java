@@ -11,8 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Intersection {
-    int id;
-    int[] trails;
+    private int id;
+    private final int[] trails;
+    private final int numberOfIntersections;
 
     public Intersection(int id) throws IOException {
         this.id = id;
@@ -24,6 +25,7 @@ public class Intersection {
 
         this.id = intersectionJson.getId();
         this.trails = intersectionJson.getTrails();
+        this.numberOfIntersections = intersections.keySet().size();
     }
 
     public int getId() {
@@ -46,9 +48,14 @@ public class Intersection {
     public String printInfo() {
         String strTrails = "";
         for (int trail : getTrails()) {
-            strTrails = strTrails + String.valueOf(trail);
+            strTrails = strTrails + trail;
             strTrails = strTrails + " ";
         }
         return "Intersection ID: " + getId() + " " + "Trails at this intersection: " + strTrails;
     }
+
+    public int getNumberOfIntersections() {
+        return numberOfIntersections;
+    }
+
 }

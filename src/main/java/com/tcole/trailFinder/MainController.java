@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class MainController {
 
-    @GetMapping("/heartbeat")
+    @GetMapping("/")
     public String heartBeat() {
         return "API is up and running.";
     }
@@ -33,7 +33,8 @@ public class MainController {
     public List<String>
     printAllTrails() throws IOException {
         List<String> allTrails = new ArrayList<String>();
-        for (int i=1; i<19; i++) {
+        Trail trailGeneric = new Trail(1);
+        for (int i=1; i<trailGeneric.getNumberOfTrails(); i++) {
             Trail trail = new Trail(i);
             allTrails.add(trail.printInfo());
         }
@@ -44,7 +45,8 @@ public class MainController {
     public List<String>
     printAllIntersections() throws IOException {
         List<String> allIntersections = new ArrayList<String>();
-        for (int i=1; i<23; i++) {
+        Intersection intersectionGeneric = new Intersection(1);
+        for (int i=1; i<intersectionGeneric.getNumberOfIntersections(); i++) {
             Intersection intersection = new Intersection(i);
             allIntersections.add(intersection.printInfo());
         }
@@ -56,12 +58,5 @@ public class MainController {
         RouteScout scout = new RouteScout();
         return scout.generateARandomRoute(id, min, max);
     }
-
-//    @GetMapping("/routeScoutDevelop")
-//    public void
-//    routeScoutDebuggin(@RequestParam int startingIntersectionId) throws IOException {
-//        RouteScout routeScout = new RouteScout();
-//       // routeScout.getFirstStep(startingIntersectionId);
-//    }
 
 }
